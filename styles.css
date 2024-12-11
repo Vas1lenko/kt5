@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #471d91;  
+}
+
+.scene {
+    position: relative;
+    height: 100vh;
+}
+
+.car {
+    position: absolute;
+    width: 200px; 
+    height: 100px; 
+    background-color: #44ff06; 
+    border-radius: 10px; /* закругленные углы */
+    bottom: 20px; /* отступ от дороги */
+    animation: drive 5s linear forwards; /* анимация движения */
+}
+
+.car::before,
+.car::after {
+    content: '';
+    position: absolute;
+    width: 60px; 
+    height: 30px; 
+    background-color: #f7f7f7; 
+    border-radius: 5px; /* закругленные углы окон */
+}
+
+.car::before {
+    top: 10px; /* положение левого окна */
+    left: 20px;
+}
+
+.car::after {
+    top: 10px; /* положение правого окна */
+    right: 20px;
+}
+
+.wheel {
+    position: absolute;
+    width: 30px; 
+    height: 30px; 
+    background-color: #000000; 
+    border-radius: 50%; /* круглая форма колеса */
+}
+
+.wheel.left {
+    bottom: -15px; /* положение левого колеса */
+    left: 20px;
+}
+
+.wheel.right {
+    bottom: -15px; /* положение правого колеса */
+    right: 20px;
+}
+
+.car::after {
+    content: '';
+    position: absolute;
+    width: 30px; 
+    height: 30px; 
+    background-color: #000000; 
+    border-radius: 50%; 
+    bottom: -15px; /* положение правого колеса */
+    right: 20px;
+}
+
+.car::before {
+    content: '';
+    position: absolute;
+    width: 30px; 
+    height: 30px; 
+    background-color: #000000; 
+    border-radius: 50%; 
+    bottom: -15px; /* положение левого колеса */
+    left: 20px;
+}
+
+@keyframes drive {
+    from {
+        left: -200px; /* начальная позиция (вне экрана) */
+    }
+    to {
+        left: calc(100vw - 250px); /* конечная позиция (за 50px до конца) */
+    }
+}
+
+/* дорога */
+.scene::after {
+    content: '';
+    position: absolute;
+    background-color: #211e1e; 
+    height: 100px; 
+    width: 100%; 
+    bottom: 0; /* положение дороги внизу экрана */
+}
+
+/* луна */
+.scene::before {
+    content: '';
+    position: absolute;
+    background-color: #cdccc6; 
+    border-radius: 50%; 
+    width: 80px; 
+    height: 80px; 
+    top: 20px; /* положение луны сверху */
+    left: calc(50% - 40px); /* центрирование луны по горизонтали */
+}
+
